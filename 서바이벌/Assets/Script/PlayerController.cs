@@ -45,8 +45,9 @@ public class PlayerController : MonoBehaviour
     // 필요한 컴포넌트
     [SerializeField]
     private Camera theCamera;
-
     private Rigidbody myRigid;
+    [SerializeField]
+    private GunController theGunController;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
         applySpeed = walkSpeed;
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
+        theGunController =FindObjectOfType<GunController>();
     }
 
     // Update is called once per frame
@@ -159,6 +161,8 @@ public class PlayerController : MonoBehaviour
     {
         if (isCrouch)
             Crouch();
+
+        theGunController.CancelFineSight();
 
         isRun = true;
         applySpeed = runSpeed;
