@@ -179,6 +179,7 @@ public class StatusController : MonoBehaviour
             currentDp = dp;
     }
 
+
     public void DecreaseDP(int _count)
     {
         currentDp -= _count;
@@ -187,6 +188,13 @@ public class StatusController : MonoBehaviour
             Debug.Log("방어력이 0이 되었습니다!!");
     }
 
+    public void IncreaseSP(int _count)
+    {
+        if (currentSp + _count < sp)
+            currentSp += _count;
+        else
+            currentSp = sp;
+    }
     public void IncreaseHungry(int _count)
     {
         if (currentHungry + _count < hungry)
